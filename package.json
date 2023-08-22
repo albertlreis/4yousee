@@ -1,12 +1,16 @@
 {
   "name": "avaliacao",
   "version": "1.0.0",
-  "description": "",
+  "description": "A 4YouSee é uma empresa que fornece tecnologia de ponta para [Digital Signage](https://www.4yousee.com.br/digital-signage/). Atendemos diversos clientes da área de publicidade e sinalização em geral como por exemplo cinemas, empresas de telefonia, varejo, etc…",
   "main": "script.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
