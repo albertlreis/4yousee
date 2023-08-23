@@ -8,20 +8,14 @@ export function isValidStartDate(startDate) {
     return planTimestamp < currentTimestamp;
 }
 
-// Função para priorizar as localidades de acordo com a hierarquia e data de início.
 
+// Função para priorizar as localidades com base na prioridade (invertida) e data de início.
 export function prioritizeLocation(locations) {
-    // Lista de prioridades
-    const locationPriorities = ['CITY', 'STATE', 'COUNTRY'];
-
-    // Ordena as localidades com base na hierarquia e data de início.
+    // Ordena as localidades com base na prioridade invertida e data de início.
     return locations.sort((a, b) => {
-        // Organizar por prioridade
-        const priorityA = locationPriorities.indexOf(a.localidade.prioridade);
-        const priorityB = locationPriorities.indexOf(b.localidade.prioridade);
-
-        if (priorityA !== priorityB) {
-            return priorityA - priorityB;
+        // Comparar prioridade (invertida)
+        if (a.localidade.prioridade !== b.localidade.prioridade) {
+            return b.localidade.prioridade - a.localidade.prioridade; // Invertido
         }
 
         // Se as prioridades forem iguais, compara pela data de início.
