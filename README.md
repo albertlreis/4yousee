@@ -1,53 +1,70 @@
 
-# Introdução
+# API de Filtragem e Priorização de Planos
 
-A 4YouSee é uma empresa que fornece tecnologia de ponta para [Digital Signage](https://www.4yousee.com.br/digital-signage/). Atendemos diversos clientes da área de publicidade e sinalização em geral como por exemplo cinemas, empresas de telefonia, varejo, etc…
+Esta é uma API Node.js que lê um arquivo JSON de planos e oferece endpoints para filtrar e priorizar esses planos com base em critérios específicos.
 
+>This is a challenge by Coodesh
 
-# Objetivo
-O objetivo deste teste é resolver um problema real de um dos sistemas mantidos pela 4YouSee para o ramo de telefonia e varejo. 
+## Funcionalidades
 
-Esta solução é responsável por exibir preço dos planos vendidos junto aos aparelhos de telefone e a sua principal característica é a possibilidade de associar vários planos a um telefone e diferentes localidades do país.
+- Filtra os planos com base em datas de início válidas.
+- Prioriza planos de acordo com a hierarquia de localidades e datas de início.
 
-# Critérios de aceitação
-Repositório: [https://bitbucket.org/4yousee/avaliacao-desenvolvedor](https://bitbucket.org/4yousee/avaliacao-desenvolvedor)
+## Requisitos
 
-O candidato deverá escrever um programa que receberá uma lista de planos(data.json) e deverá retornar a lista filtrada baseada nos critérios abaixo:
+- Node.js (versão >= 14.0.0)
+- npm (Node Package Manager)
 
-- O sistema só poderá exibir planos que tenham schedule.startDate válidos, ou seja, menor que a data atual.
-- O sistema só poderá exibir 1 única vez planos que tenham os mesmos : name, localidade dando preferência quem possuir o schedule.startDate mais recente.
-- Note que o campo localidade possui uma hierarquia (PAÍS -> ESTADO -> CIDADE). Esta hierarquia deverá ser respeitada, de maneira que a cidade terá maior prioridade que estado e  país. O sistema só poderá exibir 1 única vez planos que tenham os mesmos : name  dando preferência a hierarquia de localidades.
+## Instalação
 
+1. Clone este repositório para o seu sistema local.
+2. Navegue para a pasta do projeto:
+   ```bash
+   cd nome-do-seu-projeto
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-# Critérios de avaliação
+## Como Usar
 
+1. Coloque os dados dos planos no arquivo `data.json` na raiz do projeto.
+2. Inicie o servidor em modo de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+3. Acesse a API no seu navegador ou usando ferramentas como o Postman:
+    - Endpoint: `http://localhost:5000/plans`
+    - Método: GET
 
+## Estrutura do Projeto
 
-*   **Funcionalidade**: atender todos os critérios de aceitação mencionados;
-*   **Organização do projeto**: diretórios, arquivos, classes, etc ...;
-*   **Legibilidade do código**;
-*   Adoção de boas práticas de desenvolvimento de software;
-*   **Criatividade**: O escopo deste teste é bem aberto, do ponto de vista de requisitos técnicos, propositalmente, para que você possa demonstrar sua criatividade e propor a melhor solução que atenda a soliictação dentro do prazo disponibilizado :)
-*   **Propor melhorias  no arquivo JSON disponibilizado.**
+```
+- nome-do-seu-projeto
+  - data.json
+  - src
+    - controllers
+      - planController.js
+    - services
+      - planService.js
+    - utils
+      - filterUtils.js
+    - index.js
+  - package.json
+```
+## Melhorias no Arquivo data.json
 
+O arquivo `data.json` contém os dados dos aparelhos e planos disponíveis na API. Algumas melhorias na estrutura facilitariam a organização, compreensão e manuntenção dos dados.
 
-![imagem](img.png "imagem")
+### 1. Maiores Informações
 
+Podemos considerar inserir mais informações sobre os planos, como descrições detalhadas, especificações técnicas, benefícios, etc.
 
+### 2. Padronizar o Formato de Datas
 
-# O que é e o que não é permitido
+Podemos utilizar o padrão ISO 8601 para garantir melhores consistência e legibilidade.
 
+### 3. Utilizar Camel Case nos Nomes de Campos
 
-- <span style="color:green">É permitido</span> Pesquisar no Google;
-- <span style="color:green">É permitido</span> perguntar sobre as regras de negócio para o entrevistador;
-- <span style="color:red">Não é permitido</span> utilizar bibliotecas de terceiros. Ex.: lodash, jquery, angular, laravel, etc. Queremos ver a sua capacidade de resolver um problema de lógica de programação.
-- <span style="color:red">Não é permitido</span> fazer perguntas técnicas para o entrevistador.
-- <span style="color:orange">Não é necessário</span> criar o layout da aplicação no exemplo. O importante para a avaliação é conseguir realizar o filtro proposto. Se for possível fazer o layout durante o tempo do teste será um diferencial.
-
-
-
-# Considerações finais
-
-
-
-*   Acreditamos que o teste acima possa ser concluído em menos de 1h30min;
+Use camel case nos nomes de campos para seguir as convenções de nomenclatura em JavaScript.
