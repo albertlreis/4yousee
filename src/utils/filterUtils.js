@@ -15,7 +15,7 @@ export function prioritizeLocation(locations) {
     return locations.sort((a, b) => {
         // Comparar prioridade (invertida)
         if (a.localidade.prioridade !== b.localidade.prioridade) {
-            return b.localidade.prioridade - a.localidade.prioridade; // Invertido
+            return a.localidade.prioridade - b.localidade.prioridade; // Invertido
         }
 
         // Se as prioridades forem iguais, compara pela data de início.
