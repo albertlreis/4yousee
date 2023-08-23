@@ -59,12 +59,52 @@ O arquivo `data.json` contém os dados dos aparelhos e planos disponíveis na AP
 
 ### 1. Maiores Informações
 
-Podemos considerar inserir mais informações sobre os planos, como descrições detalhadas, especificações técnicas, benefícios, etc.
+Podemos considerar inserir mais informações sobre os planos, como descrições detalhadas, especificações técnicas, benefícios.
 
-### 2. Padronizar o Formato de Datas
-
-Podemos utilizar o padrão ISO 8601 para garantir melhores consistência e legibilidade.
-
-### 3. Utilizar Camel Case nos Nomes de Campos
+### 2. Utilizar Camel Case nos Nomes de Campos
 
 Use camel case nos nomes de campos para seguir as convenções de nomenclatura em JavaScript.
+
+### 3. Centralizar Hierarquia de Localidades
+
+Em vez de ter a hierarquia de localidades espalhada por diferentes planos, podemos centralizá-la e referenciá-la nos planos. Isso tornaria o arquivo JSON mais limpo e reduziria a repetição de informações
+
+```json
+{
+   "Aparelho": {
+      "name": "Samsung Galaxy S8"
+   },
+   "localidades": [
+      {
+         "nome": "BRASIL",
+         "prioridade": 1
+      },
+      {
+         "nome": "MINAS GERAIS",
+         "prioridade": 2
+      },
+      {
+         "nome": "BELO HORIZONTE",
+         "prioridade": 3
+      }
+   ],
+   "plans": [
+      {
+         "id": 1,
+         "type": "pos",
+         "name": "Família 50GB",
+         "localidade": "BRASIL"
+      },
+      {
+         "id": 2,
+         "type": "pos",
+         "name": "Família 50GB",
+         "localidade": "MINAS GERAIS"
+      }
+   ]
+}
+```
+
+### 4. Centralizar Informações Comuns
+
+Informações comuns a vários planos (como nome, preço do telefone, etc.), podemos centralizá-las fora da matriz de planos para reduzir a repetição.
